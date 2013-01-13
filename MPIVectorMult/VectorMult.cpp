@@ -67,11 +67,13 @@ int main(int argc, char** argv) {
         RandomDataGeneration( pVector1, Size);
         RandomDataGeneration( pVector2, Size );
 
-        for (int i = 0; i < Size; i++)
+//        for (int i = 0; i < Size; i++)
 //            printf("%f\n", pVector1[i]);
-        currentSize = Size/ProcNum;
-        printf("%d\n", currentSize);
+//        printf("%d\n", currentSize);
     }
+    
+    currentSize = Size/ProcNum;
+    printf("%d\n", currentSize);
     
     procVector1 = new double[ currentSize ];
     procVector2 = new double[ currentSize ];
