@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   VectorMult.cpp
  * Author: kate
  *
@@ -6,8 +6,8 @@
  */
 
 #include <cstdlib>
-#include <math.h> 
-#include <mpich2/mpi.h> 
+#include <math.h>
+#include <mpi.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +18,7 @@ int ProcRank = 0;
 int ProcNum = 0;
 
 /**
- * 
+ *
  * @param pVector - инициализируемый вектор
  * @param Size - размер вектора
  */
@@ -40,7 +40,7 @@ double Multiplication(double *vector1, double* vector2, int size)
 }
 
 /*
- * 
+ *
  */
 int main(int argc, char** argv)
 {
@@ -74,20 +74,22 @@ int main(int argc, char** argv)
 	}
 
 	currentSize = Size / ProcNum;
-	printf("curr size: %d\n", currentSize);
+	printf("%d\n", currentSize);
 
 	procVector1 = new double[ currentSize ];
 	procVector2 = new double[ currentSize ];
 
 	startTime = MPI_Wtime();
 
-	MPI_Scatter(pVector1, currentSize, MPI_DOUBLE, procVector1, currentSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-	MPI_Scatter(pVector2, currentSize, MPI_DOUBLE, procVector2, currentSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+	MPI_Scatter(pVector1, currentSize, MPI_DOUBLE,
+		procVector1, currentSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+	MPI_Scatter(pVector2, currentSize, MPI_DOUBLE,
+		procVector2, currentSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 	currentResult = Multiplication(procVector1, procVector2, currentSize);
-	printf("curr res: %f\n", currentResult);
 
-	MPI_Reduce(&currentResult, &pResult, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+	MPI_Reduce(&currentResult, &pResult, 1,
+		MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	endTime = MPI_Wtime();
 
