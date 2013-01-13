@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 #include <math.h> 
-#include <mpi.h> 
+#include <mpich2/mpi.h> 
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
     }
     
     currentSize = Size/ProcNum;
-    printf("%d\n", currentSize);
+    printf("curr size: %d\n", currentSize);
     
     procVector1 = new double[ currentSize ];
     procVector2 = new double[ currentSize ];
@@ -84,6 +84,7 @@ int main(int argc, char** argv) {
     MPI_Scatter( pVector2, currentSize, MPI_DOUBLE, procVector2, currentSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     
     currentResult = Multiplication( procVector1, procVector2, currentSize);
+    printf("curr res: %f\n", currentResult);
     
     MPI_Reduce( &currentResult, &pResult, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     
