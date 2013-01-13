@@ -24,15 +24,18 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>mpirun"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>mpirun "${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>mpirun -np 2 "${OUTPUT_PATH}" 15000</runcommandpicklistitem>
           <runcommandpicklistitem>mpirun -np 2 "${OUTPUT_PATH}" 20000</runcommandpicklistitem>
           <runcommandpicklistitem>mpirun -np 2 "${OUTPUT_PATH}" 100000</runcommandpicklistitem>
-          <runcommandpicklistitem>mpirun -np 2 "${OUTPUT_PATH}" 50000</runcommandpicklistitem>
           <runcommandpicklistitem>mpirun -np 8 "${OUTPUT_PATH}" 50000</runcommandpicklistitem>
+          <runcommandpicklistitem>mpirun -np 2 "${OUTPUT_PATH}" 50000</runcommandpicklistitem>
+          <runcommandpicklistitem>mpirun -np 2 "${OUTPUT_PATH}" 10000</runcommandpicklistitem>
+          <runcommandpicklistitem>mpirun -np 4 "${OUTPUT_PATH}" 10000</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>mpirun -np 2 "${OUTPUT_PATH}" 10000</runcommand>
+        <runcommand>mpirun -np 4 "${OUTPUT_PATH}" 10000</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

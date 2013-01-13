@@ -57,9 +57,11 @@ int main(int argc, char** argv)
 	MPI_Init(&argc, &argv);
 	MPI_Comm_size(MPI_COMM_WORLD, &ProcNum);
 	MPI_Comm_rank(MPI_COMM_WORLD, &ProcRank);
+	
+	Size = atoi(argv[1]);
 
 	if (ProcRank == 0) {
-		Size = atoi(argv[1]);
+		
 		printf("Size: %d\nProcs: %d\n", Size, ProcNum);
 
 		pVector1 = new double [Size];
@@ -87,7 +89,7 @@ int main(int argc, char** argv)
 		procVector2, currentSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 	currentResult = Multiplication(procVector1, procVector2, currentSize);
-	printf("curr res:%f", currentResult);
+	printf("curr res:%f\n", currentResult);
 
 	MPI_Reduce(&currentResult, &pResult, 1,
 		MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
