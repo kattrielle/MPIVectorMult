@@ -5,6 +5,7 @@
                    displayName="Исходные файлы"
                    projectFiles="true">
       <itemPath>Mult.cpp</itemPath>
+      <itemPath>VectorMult.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Файлы заголовков"

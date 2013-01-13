@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/VectorMult.o \
 	${OBJECTDIR}/Mult.o
 
 
@@ -61,6 +62,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mpivectormult: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mpivectormult ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/VectorMult.o: VectorMult.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/VectorMult.o VectorMult.cpp
 
 ${OBJECTDIR}/Mult.o: Mult.cpp 
 	${MKDIR} -p ${OBJECTDIR}
