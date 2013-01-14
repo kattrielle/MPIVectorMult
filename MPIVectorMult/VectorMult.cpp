@@ -42,7 +42,7 @@ void RandomDataGeneration(double* pVector, int Size)
  */
 double Multiplication(double *vector1, double* vector2, int size)
 {
-	double result;
+	double result = 0;
 	for (int i = 0; i < size; i++) {
 		result += vector1[i] * vector2[i];
 	}
